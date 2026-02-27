@@ -1,14 +1,13 @@
 import {MdShare} from 'react-icons/md'
-import {SiFacebook, SiInstagram, SiLinkedin, SiWhatsapp, SiX, SiYoutube} from 'react-icons/si'
+import {SiBluesky, SiFacebook, SiInstagram, SiX, SiYoutube} from 'react-icons/si'
 import {defineField, defineType} from 'sanity'
 
 const titleMap = {
   instagram: {title: 'Instagram', icon: SiInstagram},
   facebook: {title: 'Facebook', icon: SiFacebook},
   youtube: {title: 'YouTube', icon: SiYoutube},
-  whatsapp: {title: 'WhatsApp', icon: SiWhatsapp},
   twitter: {title: 'X / Twitter', icon: SiX},
-  linkedin: {title: 'LinkedIn', icon: SiLinkedin},
+  bluesky: {title: 'Bluesky', icon: SiBluesky},
 } as const
 
 export default defineType({

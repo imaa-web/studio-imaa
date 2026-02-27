@@ -2,11 +2,10 @@ import blockContent from './arrays/blockContent'
 import homePage from './documents/homePage'
 import page from './documents/page'
 import siteSettings from './documents/siteSettings'
-import callToAction from './objects/callToAction'
+import transparencySection from './documents/transparencySection'
 import contactInfo from './objects/contactInfo'
 import downloadableFile from './objects/downloadableFile'
 import featuredImage from './objects/featuredImage'
-import form from './objects/form'
 import gallery from './objects/gallery'
 import hero from './objects/hero'
 import horizontalRule from './objects/horizontalRule'
@@ -29,11 +28,10 @@ export const schemaTypes = [
   downloadableFile,
   youtubeEmbed,
   videoFile,
-  callToAction,
-  form,
   contactInfo,
   socialLinks,
   homePage,
   page,
   siteSettings,
+  transparencySection,
 ]

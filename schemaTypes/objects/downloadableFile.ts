@@ -11,13 +11,6 @@ export default defineType({
   },
   fields: [
     defineField({
-      name: 'label',
-      title: 'Rótulo (Opcional)',
-      type: 'string',
-      description: 'Ex: "Mais informações", "Acesse", "Edital"',
-      placeholder: 'Mais informações',
-    }),
-    defineField({
       name: 'title',
       title: 'Texto do Link',
       type: 'string',
@@ -30,6 +23,13 @@ export default defineType({
           }
           return true
         }),
+    }),
+    defineField({
+      name: 'label',
+      title: 'Rótulo (Opcional)',
+      type: 'string',
+      description: 'Ex: "Mais informações", "Acesse", "Edital"',
+      placeholder: 'Mais informações',
     }),
   ],
   preview: {

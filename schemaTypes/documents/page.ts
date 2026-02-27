@@ -7,7 +7,7 @@ export default defineType({
   title: 'Páginas',
   type: 'document',
   icon: MdInsertDriveFile,
-  groups: baseGroups,
+  groups: [...baseGroups],
   fields: [...basePageFields],
   preview: {
     select: {

@@ -10,7 +10,7 @@ export default defineType({
   groups: baseGroups,
   fields: [
     titleField(),
-    excerptField,
+    excerptField(),
     defineField({
       name: 'heroText',
       title: 'Texto da Seção Hero',

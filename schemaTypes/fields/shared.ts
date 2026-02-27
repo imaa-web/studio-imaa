@@ -1,3 +1,4 @@
+import {LuLayoutPanelTop} from 'react-icons/lu'
 import {MdContentPaste, MdSearch} from 'react-icons/md'
 import {defineArrayMember, defineField, type FieldGroupDefinition} from 'sanity'
 
@@ -6,30 +7,31 @@ import {defineArrayMember, defineField, type FieldGroupDefinition} from 'sanity'
  */
 export const baseGroups: FieldGroupDefinition[] = [
   {name: 'content', title: 'Conteúdo', icon: MdContentPaste, default: true},
+  {name: 'hero', title: 'Hero', icon: LuLayoutPanelTop},
   {name: 'seo', title: 'SEO / Metadados', icon: MdSearch},
 ]
 
 /**
  * Campo de título padrão
  */
-export const titleField = (title: string = 'Título') =>
+export const titleField = (title: string = 'Título', group: string = 'content') =>
   defineField({
     name: 'title',
     title,
     type: 'string',
-    group: 'content',
+    group,
     validation: (Rule) => Rule.required(),
   })
 
 /**
  * Campo de slug padrão baseado no título
  */
-export const slugField = (source: string = 'title') =>
+export const slugField = (source: string = 'title', group: string = 'content') =>
   defineField({
     name: 'slug',
     title: 'Slug (URL)',
     type: 'slug',
-    group: 'content',
+    group,
     options: {
       source,
       maxLength: 96,
@@ -39,35 +41,49 @@ export const slugField = (source: string = 'title') =>
   })
 
 /**
+ * Campo de hero (usa o objeto customizado hero)
+ */
+export const heroField = (group: string = 'hero') =>
+  defineField({
+    name: 'hero',
+    title: 'Hero',
+    type: 'hero',
+    group,
+  })
+
+/**
  * Campo de imagem destacada (usa o objeto customizado featuredImage)
  */
-export const featuredImageField = defineField({
-  name: 'featuredImage',
-  title: 'Imagem Destacada',
-  type: 'featuredImage',
-  group: 'content',
-  description: 'Imagem principal que aparece no topo',
-})
+export const featuredImageField = (group: string = 'content') =>
+  defineField({
+    name: 'featuredImage',
+    title: 'Imagem Destacada',
+    type: 'featuredImage',
+    group,
+    description: 'Imagem principal que aparece no topo',
+  })
 
 /**
  * Campo de conteúdo Portable Text
  */
-export const contentField = defineField({
-  name: 'content',
-  title: 'Corpo do Conteúdo',
-  type: 'blockContent',
-  group: 'content',
-})
+export const contentField = (group: string = 'content') =>
+  defineField({
+    name: 'content',
+    title: 'Corpo do Conteúdo',
+    type: 'blockContent',
+    group,
+  })
 
 /**
  * Campo de galeria
  */
-export const galleryField = defineField({
-  name: 'gallery',
-  title: 'Galeria de Imagens',
-  type: 'gallery',
-  group: 'content',
-})
+export const galleryField = (group: string = 'content') =>
+  defineField({
+    name: 'gallery',
+    title: 'Galeria de Imagens',
+    type: 'gallery',
+    group,
+  })
 
 /**
  * Campo de page builder - Array de blocos modulares para construção de páginas
@@ -85,11 +101,6 @@ export const pageBuilderField = defineField({
     },
   },
   of: [
-    defineArrayMember({
-      name: 'hero',
-      title: 'Hero',
-      type: 'hero',
-    }),
     defineArrayMember({
       name: 'textWithIllustration',
       title: 'Texto com Ilustração',
@@ -111,21 +122,6 @@ export const pageBuilderField = defineField({
       type: 'youtubeEmbed',
     }),
     defineArrayMember({
-      name: 'downloadableFile',
-      title: 'Link para PDF',
-      type: 'downloadableFile',
-    }),
-    defineArrayMember({
-      name: 'form',
-      title: 'Formulário',
-      type: 'form',
-    }),
-    defineArrayMember({
-      name: 'callToAction',
-      title: 'Chamada para Ação (CTA)',
-      type: 'callToAction',
-    }),
-    defineArrayMember({
       name: 'horizontalRule',
       title: 'Linha Horizontal',
       type: 'horizontalRule',
@@ -136,16 +132,17 @@ export const pageBuilderField = defineField({
 /**
  * Campo de resumo para SEO e listas
  */
-export const excerptField = defineField({
-  name: 'excerpt',
-  title: 'Resumo / Sinopse',
-  type: 'text',
-  group: 'seo',
-  rows: 3,
-  description: 'Usado para SEO e listagens automáticas.',
-  validation: (Rule) =>
-    Rule.max(160).warning('O ideal é manter abaixo de 160 caracteres para melhor SEO.'),
-})
+export const excerptField = (group: string = 'seo') =>
+  defineField({
+    name: 'excerpt',
+    title: 'Resumo / Sinopse',
+    type: 'text',
+    group,
+    rows: 3,
+    description: 'Usado para SEO e listagens automáticas.',
+    validation: (Rule) =>
+      Rule.max(160).warning('O ideal é manter abaixo de 160 caracteres para melhor SEO.'),
+  })
 
 /**
  * Base completa para páginas (campos comuns)
@@ -155,8 +152,9 @@ export const excerptField = defineField({
 export const basePageFields = [
   titleField(),
   slugField(),
-  featuredImageField,
-  contentField,
+  heroField(),
+  featuredImageField(),
+  contentField(),
+  excerptField(),
   pageBuilderField,
-  excerptField,
 ]

@@ -4,6 +4,7 @@ import page from './documents/page'
 import siteSettings from './documents/siteSettings'
 import transparencySection from './documents/transparencySection'
 import contactInfo from './objects/contactInfo'
+import cta from './objects/cta'
 import downloadableFile from './objects/downloadableFile'
 import featuredImage from './objects/featuredImage'
 import gallery from './objects/gallery'
@@ -32,6 +33,7 @@ export const schemaTypes = [
   videoFile,
   contactInfo,
   socialLinks,
+  cta,
   homePage,
   page,
   siteSettings,

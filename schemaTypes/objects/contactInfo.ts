@@ -23,7 +23,6 @@ export default defineType({
           validation: (Rule) =>
             Rule.regex(/^\d{5}-\d{3}$/).error('CEP inválido. Use o formato 00000-000'),
         }),
-        defineField({name: 'googleMapsUrl', title: 'Link Google Maps', type: 'url'}),
       ],
     }),
     defineField({

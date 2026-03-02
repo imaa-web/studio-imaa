@@ -1,4 +1,5 @@
 import blockContent from './arrays/blockContent'
+import contactPage from './documents/contactPage'
 import homePage from './documents/homePage'
 import page from './documents/page'
 import siteSettings from './documents/siteSettings'
@@ -8,6 +9,7 @@ import cta from './objects/cta'
 import ctaSection from './objects/ctaSection'
 import downloadableFile from './objects/downloadableFile'
 import featuredImage from './objects/featuredImage'
+import formField from './objects/formField'
 import gallery from './objects/gallery'
 import hero from './objects/hero'
 import horizontalRule from './objects/horizontalRule'
@@ -35,8 +37,10 @@ export const schemaTypes = [
   contactInfo,
   socialLinks,
   cta,
+  formField,
   ctaSection,
   homePage,
+  contactPage,
   page,
   siteSettings,
   transparencySection,

@@ -1,12 +1,12 @@
 import {ptBRLocale} from '@sanity/locale-pt-br'
 import {visionTool} from '@sanity/vision'
-import {MdHome, MdSettings} from 'react-icons/md'
+import {MdContactPage, MdHome, MdSettings} from 'react-icons/md'
 import {defineConfig} from 'sanity'
 import {media} from 'sanity-plugin-media'
 import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 
-const singletonTypes = new Set(['siteSettings', 'homePage'])
+const singletonTypes = new Set(['siteSettings', 'homePage', 'contactPage'])
 
 export default defineConfig({
   name: 'default',
@@ -40,13 +40,26 @@ export default defineConfig({
               .child(
                 S.document().schemaType('homePage').documentId('homePage').title('Página Inicial'),
               ),
+            //Página de Contato
+            S.listItem()
+              .title('Página de Contato')
+              .id('contactPage')
+              .icon(MdContactPage)
+              .child(
+                S.document()
+                  .schemaType('contactPage')
+                  .documentId('contactPage')
+                  .title('Página de Contato'),
+              ),
 
             S.divider(),
 
             // Lista automática dos outros documentos
             ...S.documentTypeListItems().filter(
               (item) =>
-                !['siteSettings', 'homePage', 'menuItem', 'media.tag'].includes(item.getId() ?? ''),
+                !['siteSettings', 'homePage', 'contactPage', 'menuItem', 'media.tag'].includes(
+                  item.getId() ?? '',
+                ),
             ),
           ]),
     }),

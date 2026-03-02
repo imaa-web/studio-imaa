@@ -12,7 +12,7 @@ export default defineType({
       title: 'Página de Destino',
       description: 'Selecione para link direto. Deixe vazio para criar um Dropdown.',
       type: 'reference',
-      to: [{type: 'page'}, {type: 'homePage'}],
+      to: [{type: 'page'}, {type: 'homePage'}, {type: 'contactPage'}],
     }),
     defineField({
       name: 'label',

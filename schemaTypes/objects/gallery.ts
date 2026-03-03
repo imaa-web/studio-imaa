@@ -31,6 +31,22 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'autoplay',
+      title: 'Autoplay (apenas carrossel)',
+      type: 'boolean',
+      description: 'Define se o carrossel deve avançar automaticamente.',
+      hidden: ({parent}) => parent?.layout !== 'carousel',
+    }),
+    defineField({
+      name: 'autoplayInterval',
+      title: 'Intervalo do Autoplay (segundos)',
+      type: 'number',
+      description: 'Tempo em segundos entre cada transição.',
+      hidden: ({parent}) => parent?.layout !== 'carousel' || !parent?.autoplay,
+      validation: (Rule) => Rule.min(1).max(60),
+      initialValue: 4,
+    }),
+    defineField({
       name: 'images',
       title: 'Imagens',
       type: 'array',

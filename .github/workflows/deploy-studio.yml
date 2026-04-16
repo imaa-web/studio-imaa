@@ -37,4 +37,6 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           SANITY_STUDIO_WEBHOOK_SALT: ${{ secrets.SANITY_WEBHOOK_SALT }}
+          SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_STUDIO_DATASET: ${{ secrets.SANITY_DATASET }}
         run: pnpm sanity deploy --yes

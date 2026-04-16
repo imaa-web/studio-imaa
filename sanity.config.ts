@@ -26,6 +26,7 @@ export default defineConfig({
       title: 'Atualizar Site',
       text: 'Atualizar site público após alterações',
       encryptionSalt: SANITY_WEBHOOK_SALT,
+      githubEventType: 'deploy-production',
     }),
   ],
 
